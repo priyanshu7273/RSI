@@ -1,0 +1,256 @@
+Universe: 453 symbols from bundled snapshot (2025 (approx, verify against NSE))
+Loading data via provider='cache' ...
+Loaded 433 symbols; skipped 20 (sparse/missing/too-short).
+  examples of skipped: [('TATAMOTORS', 'no cached data'), ('INTERGLOBE', 'no cached data'), ('AMARAJABAT', 'no cached data'), ('GSPL', 'no cached data'), ('GUJGASLTD', 'no cached data'), ('LTIM', 'no cached data'), ('PEL', 'no cached data'), ('HITACHIEN', 'no cached data'), ('KALPATPOWR', 'no cached data'), ('TV18BRDCST', 'no cached data')]
+
+##############################################################################
+# DATA VERIFICATION (sample)
+##############################################################################
+
+--- RELIANCE: 1984 rows, 2018-10-01 -> 2026-10-01
+             open    high     low   close    volume
+date                                               
+2018-10-01  599.4  599.40  573.80  587.00  15385428
+2018-10-03  586.0  590.80  571.95  574.35  15477500
+2018-10-04  566.9  567.35  527.10  534.90  48704256
+  ...
+              open    high     low   close    volume
+date                                                
+2026-09-29  1193.8  1198.3  1181.8  1182.0  24191416
+2026-09-30  1182.0  1196.5  1181.7  1187.0  16376789
+2026-10-01  1180.1  1183.9  1160.8  1167.7  16771221
+  last close=1167.70  52w-low(as of last)=1160.80  all-time-min low=417.30
+  no >35% single-day moves (adjustment looks sane)
+
+--- TCS: 1983 rows, 2018-10-01 -> 2026-10-01
+              open     high      low    close   volume
+date                                                  
+2018-10-01  2190.9  2275.95  2190.35  2255.55  3772208
+2018-10-03  2250.3  2255.00  2155.60  2162.85  3902322
+2018-10-04  2156.6  2156.65  2056.35  2064.80  4762419
+  ...
+              open    high     low   close   volume
+date                                               
+2026-09-29  2065.0  2085.1  2032.4  2032.4  4437783
+2026-09-30  2069.0  2101.0  2050.6  2050.6  3656425
+2026-10-01  2052.6  2093.9  2045.1  2075.0  3428501
+  last close=2075.00  52w-low(as of last)=1976.80  all-time-min low=1506.05
+  no >35% single-day moves (adjustment looks sane)
+
+--- HDFCBANK: 1983 rows, 2018-10-01 -> 2026-10-01
+             open   high    low  close   volume
+date                                           
+2018-10-01  502.4  510.5  499.4  508.8  6224794
+2018-10-03  507.6  513.0  501.8  507.8  7666074
+2018-10-04  502.0  504.4  485.8  489.4  8985292
+  ...
+             open   high     low  close    volume
+date                                             
+2026-09-29  713.7  722.7  706.25  722.7  42755901
+2026-09-30  711.5  720.3  708.70  708.7  39365496
+2026-10-01  708.4  721.3  707.10  721.2  37389857
+  last close=721.20  52w-low(as of last)=681.90  all-time-min low=369.40
+  no >35% single-day moves (adjustment looks sane)
+
+==============================================================================
+TRAIL VARIANT: ema10
+==============================================================================
+Total trades (signals that entered): 846
+
+-- Per-trade stats [GROSS (no costs)] --
+   win rate      : 30.61%   (259W / 587L)
+   avg win       : 10.49%
+   avg loss      : -4.78%
+   avg R         : -0.11
+   expectancy    : -0.11 R  (-0.11% per trade)
+   profit factor : 0.97
+   avg days held : 8.2
+
+-- Per-trade stats [NET (costs 0.20% round-trip)] --
+   win rate      : 30.38%   (257W / 589L)
+   avg win       : 10.37%
+   avg loss      : -4.96%
+   avg R         : -0.16
+   expectancy    : -0.16 R  (-0.31% per trade)
+   profit factor : 0.91
+   avg days held : 8.2
+
+-- Exit types fired --
+   breakeven       : 39
+   end_of_data     : 1
+   initial_stop    : 538
+   target_20pct    : 76
+   trail_ema10     : 192
+
+-- +20% cap analysis (what the cap costs) --
+   cap hits (+20% target): 76 / 846 (8.98% of trades)
+   of those, still rising past +20% if uncapped: 35 (46.05%)
+   avg uncapped return on cap-hit trades: 21.69%
+   avg return left on table by the cap  : 1.69% per cap-hit trade
+   max uncapped return on a cap-hit trade: 71.69%
+
+-- Winning-trade return distribution (net) --
+   winners: 257   mean: 10.37%
+   percentiles: p10=3.02%  p25=4.94%  p50=7.90%  p75=19.80%  p90=19.80%  p95=19.95%  p100=24.97%
+   histogram: [0-2]=14  [2-5]=52  [5-10]=93  [10-15]=20  [15-20]=65  [20-25]=13
+
+-- Portfolio metrics (capital-aware simulation) --
+   [risk/gross] totRet=-56.70%  CAGR=-9.93%  maxDD=-62.68%  ret/DD=-0.90  Sharpe=-0.72
+        taken=410  skipped(capital)=436  skipped(concurrency)=0
+   [risk/net] totRet=-63.25%  CAGR=-11.76%  maxDD=-68.10%  ret/DD=-0.93  Sharpe=-0.86
+        taken=418  skipped(capital)=428  skipped(concurrency)=0
+   [equal/gross] totRet=-42.82%  CAGR=-6.75%  maxDD=-46.41%  ret/DD=-0.92  Sharpe=-0.63
+        taken=573  skipped(capital)=273  skipped(concurrency)=0
+   [equal/net] totRet=-48.14%  CAGR=-7.88%  maxDD=-51.27%  ret/DD=-0.94  Sharpe=-0.74
+        taken=571  skipped(capital)=275  skipped(concurrency)=0
+   [plot] outputs/variant_ema10.png
+   [trade log] outputs/trades_ema10.csv
+
+==============================================================================
+TRAIL VARIANT: lastlow
+==============================================================================
+Total trades (signals that entered): 846
+
+-- Per-trade stats [GROSS (no costs)] --
+   win rate      : 27.66%   (234W / 612L)
+   avg win       : 11.30%
+   avg loss      : -4.60%
+   avg R         : -0.10
+   expectancy    : -0.10 R  (-0.20% per trade)
+   profit factor : 0.94
+   avg days held : 7.7
+
+-- Per-trade stats [NET (costs 0.20% round-trip)] --
+   win rate      : 27.54%   (233W / 613L)
+   avg win       : 11.15%
+   avg loss      : -4.80%
+   avg R         : -0.16
+   expectancy    : -0.16 R  (-0.40% per trade)
+   profit factor : 0.88
+   avg days held : 7.7
+
+-- Exit types fired --
+   breakeven       : 69
+   end_of_data     : 1
+   initial_stop    : 538
+   target_20pct    : 68
+   trail_lastlow   : 170
+
+-- +20% cap analysis (what the cap costs) --
+   cap hits (+20% target): 68 / 846 (8.04% of trades)
+   of those, still rising past +20% if uncapped: 28 (41.18%)
+   avg uncapped return on cap-hit trades: 21.00%
+   avg return left on table by the cap  : 1.00% per cap-hit trade
+   max uncapped return on a cap-hit trade: 76.19%
+
+-- Winning-trade return distribution (net) --
+   winners: 233   mean: 11.15%
+   percentiles: p10=3.83%  p25=6.23%  p50=9.28%  p75=19.80%  p90=19.80%  p95=20.81%  p100=24.97%
+   histogram: [0-2]=9  [2-5]=27  [5-10]=99  [10-15]=30  [15-20]=54  [20-25]=14
+
+-- Portfolio metrics (capital-aware simulation) --
+   [risk/gross] totRet=-55.66%  CAGR=-9.67%  maxDD=-61.81%  ret/DD=-0.90  Sharpe=-0.71
+        taken=414  skipped(capital)=432  skipped(concurrency)=0
+   [risk/net] totRet=-62.60%  CAGR=-11.57%  maxDD=-67.55%  ret/DD=-0.93  Sharpe=-0.86
+        taken=423  skipped(capital)=423  skipped(concurrency)=0
+   [equal/gross] totRet=-40.56%  CAGR=-6.30%  maxDD=-44.56%  ret/DD=-0.91  Sharpe=-0.60
+        taken=577  skipped(capital)=269  skipped(concurrency)=0
+   [equal/net] totRet=-46.24%  CAGR=-7.47%  maxDD=-49.43%  ret/DD=-0.94  Sharpe=-0.72
+        taken=572  skipped(capital)=274  skipped(concurrency)=0
+   [plot] outputs/variant_lastlow.png
+   [trade log] outputs/trades_lastlow.csv
+
+==============================================================================
+TRAIL VARIANT: atr
+==============================================================================
+Total trades (signals that entered): 846
+
+-- Per-trade stats [GROSS (no costs)] --
+   win rate      : 26.71%   (226W / 620L)
+   avg win       : 11.32%
+   avg loss      : -4.54%
+   avg R         : -0.13
+   expectancy    : -0.13 R  (-0.31% per trade)
+   profit factor : 0.91
+   avg days held : 8.2
+
+-- Per-trade stats [NET (costs 0.20% round-trip)] --
+   win rate      : 26.60%   (225W / 621L)
+   avg win       : 11.17%
+   avg loss      : -4.74%
+   avg R         : -0.18
+   expectancy    : -0.18 R  (-0.51% per trade)
+   profit factor : 0.85
+   avg days held : 8.2
+
+-- Exit types fired --
+   breakeven       : 64
+   end_of_data     : 1
+   initial_stop    : 538
+   target_20pct    : 83
+   trail_atr       : 160
+
+-- +20% cap analysis (what the cap costs) --
+   cap hits (+20% target): 83 / 846 (9.81% of trades)
+   of those, still rising past +20% if uncapped: 29 (34.94%)
+   avg uncapped return on cap-hit trades: 19.03%
+   avg return left on table by the cap  : -0.97% per cap-hit trade
+   max uncapped return on a cap-hit trade: 77.57%
+
+-- Winning-trade return distribution (net) --
+   winners: 225   mean: 11.17%
+   percentiles: p10=2.50%  p25=4.64%  p50=8.37%  p75=19.80%  p90=19.80%  p95=20.94%  p100=24.97%
+   histogram: [0-2]=15  [2-5]=46  [5-10]=66  [10-15]=15  [15-20]=67  [20-25]=16
+
+-- Portfolio metrics (capital-aware simulation) --
+   [risk/gross] totRet=-60.13%  CAGR=-10.86%  maxDD=-63.96%  ret/DD=-0.94  Sharpe=-0.83
+        taken=420  skipped(capital)=426  skipped(concurrency)=0
+   [risk/net] totRet=-66.23%  CAGR=-12.69%  maxDD=-69.29%  ret/DD=-0.96  Sharpe=-0.98
+        taken=411  skipped(capital)=435  skipped(concurrency)=0
+   [equal/gross] totRet=-48.34%  CAGR=-7.93%  maxDD=-51.66%  ret/DD=-0.94  Sharpe=-0.77
+        taken=561  skipped(capital)=285  skipped(concurrency)=0
+   [equal/net] totRet=-53.43%  CAGR=-9.11%  maxDD=-56.29%  ret/DD=-0.95  Sharpe=-0.89
+        taken=566  skipped(capital)=280  skipped(concurrency)=0
+   [plot] outputs/variant_atr.png
+   [trade log] outputs/trades_atr.csv
+
+============================================================================================
+TRAIL-VARIANT COMPARISON  (portfolio = risk-sizing, net of costs)
+============================================================================================
+variant     trades  winRate   exp(R)  capHit%   totRet%   CAGR%   maxDD%  Sharpe
+--------------------------------------------------------------------------------
+ema10          846    30.4%   -0.158     9.0%     -63.2   -11.8    -68.1   -0.86
+lastlow        846    27.5%   -0.156     8.0%     -62.6   -11.6    -67.6   -0.86
+atr            846    26.6%   -0.183     9.8%     -66.2   -12.7    -69.3   -0.98
+
+==============================================================================
+SIGNAL FUNNEL (shared across variants' signal detection)
+==============================================================================
+  signals detected : 1202
+  -> entered       : 846
+  -> expired (buy-stop never triggered in window): 238
+  -> skipped (position/order already open)       : 118
+
+==============================================================================
+VERDICT
+==============================================================================
+Does this strategy show a real, tradeable edge on this data? -> NO
+
+Per-variant net per-trade expectancy (R):
+   ema10     : -0.158 R   (trades=846)
+   lastlow   : -0.156 R   (trades=846)
+   atr       : -0.183 R   (trades=846)
+
+Why, and the caveats that dominate this read:
+  * Universe source: bundled snapshot (2025 (approx, verify against NSE)); symbols actually tested: 433.
+  * Signals: 1202 -> entered 846, expired 238, skipped(overlap) 118.
+  * Total trades (max across variants): 846
+  * SURVIVORSHIP BIAS: only current/surviving constituents are tested. This
+    strategy buys stocks making new 52-week lows -- exactly where delisted
+    losers are missing -- so win rate and returns are biased UPWARD. Any
+    positive edge here is an optimistic upper bound, not a realistic one.
+  * The +20% hard cap truncates winners (see per-variant cap analysis) and
+    mechanically lowers avg win and expectancy vs an uncapped version.
+  * Costs matter: compare GROSS vs NET per variant above; a gross edge that
+    vanishes net of ~0.2% round-trip is not tradeable.
+  * Least-bad variant by net expectancy: lastlow (-0.156 R).

@@ -2,10 +2,7 @@
 data_cache/*.parquet
 data_cache/*.csv
 !data_cache/.gitkeep
-# Outputs
-outputs/*.png
-outputs/*.csv
-!outputs/.gitkeep
+# Outputs — committed as deliverables (plots, trade logs, run report)
 # Python
 __pycache__/
 *.pyc
