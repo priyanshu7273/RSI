@@ -67,6 +67,28 @@ def normalize_ohlcv(df: pd.DataFrame) -> pd.DataFrame:
     return out
 
 
+def clean_ohlcv(df: pd.DataFrame, max_gap_days: int = 45, head_frac: float = 0.25
+                ) -> pd.DataFrame:
+    """Drop isolated LEADING fragments separated from the main series by a large
+    calendar gap.
+
+    Some Kite/yfinance series carry a handful of spurious placeholder candles
+    dated well before the stock's real listing (e.g. sub-rupee rows years early),
+    then a long gap, then the genuine history. Those stray early candles can
+    manufacture a FAKE 52-week low. If a gap larger than `max_gap_days` occurs
+    within the first `head_frac` of the rows, everything up to and including that
+    gap is dropped. Normal continuous series are untouched.
+    """
+    if df is None or len(df) < 10:
+        return df
+    gaps = df.index.to_series().diff().dt.days.to_numpy()
+    cutoff = max(1, int(len(df) * head_frac))
+    big = [i for i in range(1, cutoff) if gaps[i] > max_gap_days]
+    if big:
+        return df.iloc[big[-1]:]
+    return df
+
+
 def load_from_cache(cfg: Config, symbol: str) -> pd.DataFrame | None:
     path = _cache_path(cfg, symbol)
     if os.path.exists(path):
@@ -217,13 +239,16 @@ def load_universe_data(symbols: list[str], cfg: Config, force_refresh: bool = Fa
     """Load normalized OHLCV for a universe, trimmed to the last `cfg.years`."""
     provider = get_provider(cfg, force_refresh=force_refresh)
     frames, skipped = provider.get(symbols)
-    # trim each frame to the requested window (keep a warm-up buffer)
+    # clean isolated pre-listing fragments, then trim to the requested window
     if frames:
         end = max(df.index.max() for df in frames.values())
         start = end - pd.Timedelta(days=int((cfg.years + 1) * 365.25))
         for sym in list(frames.keys()):
-            frames[sym] = frames[sym].loc[frames[sym].index >= start]
-            if len(frames[sym]) < cfg.min_history_days:
-                skipped.append((sym, f"too few rows after trim ({len(frames[sym])})"))
+            df = clean_ohlcv(frames[sym])
+            df = df.loc[df.index >= start]
+            if len(df) < cfg.min_history_days:
+                skipped.append((sym, f"too few rows after clean/trim ({len(df)})"))
                 del frames[sym]
+            else:
+                frames[sym] = df
     return frames, skipped
