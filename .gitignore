@@ -1,0 +1,14 @@
+# Data cache (can be large; do not commit by default)
+data_cache/*.parquet
+data_cache/*.csv
+!data_cache/.gitkeep
+# Outputs
+outputs/*.png
+outputs/*.csv
+!outputs/.gitkeep
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+.pytest_cache/
